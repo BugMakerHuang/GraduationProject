@@ -1,0 +1,19 @@
+.footer{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    height: 20px;
+    background: #1b6d85;
+    display: block;
+}
+
+.footer .signUpIn{
+    position: absolute;
+    left: 50%;
+
+    color: #f2dede;
+}
+
+.footer .signUpIn a{
+    color: #f2dede;
+}
