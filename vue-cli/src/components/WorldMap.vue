@@ -26,6 +26,13 @@ export default {
                 trigger: 'item',
                 formatter: '{b}<br/>{c} (人)'
               },
+              //设置echarts图随滚轮缩放
+              dataZoom: [
+                {
+                  type: "inside"
+                }
+              ],
+              roam: true,
               series: [{
                 type: 'map',
                 map: 'world',
