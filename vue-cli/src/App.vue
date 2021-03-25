@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <WorldMap msg="This is for map"/>
+    <WorldMap/>
     <Controller msg="This is for controller"/>
     <Footer/>
 
