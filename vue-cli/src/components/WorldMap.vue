@@ -4,34 +4,53 @@
 
 <script>
 import * as echarts from 'echarts'
+import '/public/js/china.js'
+import axios from 'axios'
+
 export default {
   name: "WorldMap",
-  methods:{
-      drawLine(id){
-        let myChart = echarts.init(document.getElementById(id));
+  methods: {
+    getWorld() {
+      axios.get('/js/json/world.json').then(function (worldJson) {
+        echarts.registerMap('world', worldJson.data);
+        let myChart = echarts.init(document.getElementById("map"));
+        // 监听屏幕变化自动缩放图表
+        window.addEventListener('resize', function () {
+          myChart.resize()
+        })
         myChart.setOption({
-          title: {
-            text: 'ECharts 入门示例'
-          },
-          tooltip: {},
-          legend: {
-            data:['销量']
-          },
-          xAxis: {
-            data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
-          },
-          yAxis: {},
-          series: [{
-            name: '销量',
-            type: 'bar',
-            data: [5, 20, 36, 10, 10, 20]
-          }]
-        });
-      }
+              title: [{
+                text: '世界地图'
+              }],
+              tooltip:{
+                trigger: 'item',
+                formatter: '{b}<br/>{c} (人)'
+              },
+              series: [{
+                type: 'map',
+                map: 'world',
+                data: [
+                  {name: 'China',value:23123123},
+                  {name: 'Russia' ,value: 23234}
+                ]
+              }],
+              visualMap: {
+                type: 'continuous',
+                min: 0,
+                max: 1000000,
+                text: ['High','Low'],
+                realtime: true,
+                calculable: true,
+                inRange:{
+                  color: ['lightskyblue','yellow','orangered']
+                }
+              }
+          })
+      })
     },
+  },
   mounted() {
-    this.drawLine("map");
-    console.log("hello")
+    this.getWorld();
   }
 }
 
