@@ -1,6 +1,8 @@
 <template>
   <div id="controller">
-     {{msg}}
+     <div class="">
+
+     </div>
   </div>
 </template>
 
