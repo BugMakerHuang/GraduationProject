@@ -14,5 +14,10 @@ import lombok.ToString;
 public class Country {
     private String id;
     private String name;
-    private String population;
+    private Double population;
+    private Double confirmed;
+    private Double death;
+    private Integer emotion;
+    private Integer gov;
+    private Integer medical;
 }
